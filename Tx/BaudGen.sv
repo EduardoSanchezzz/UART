@@ -9,23 +9,28 @@ module BaudGen(
   parameter BAUD48 = 0, BAUD96 = 1, BAUD192 = 2, BAUD384 = 3;
   
   
-  reg [12:0] limit;
+  reg [12:0] limit = 0;
   
   always @(*) begin
     case(baud_rate)
-      BAUD48: limit = 7500;
-      BAUD96: limit = 3750;
-      BAUD192: limit = 1875;
-      BAUD384: limit = 937;
-      default: limit = 0;
+      BAUD48: limit = 3750;
+      BAUD96: limit = 1875;
+      BAUD192: limit = 937;
+      BAUD384: limit = 469;
     endcase
   end
   
   always @(negedge resetn, posedge clk) begin
-    if (!resetn || count == limit) count <= 0;
+    if (!resetn) begin 
+      count <= 0;
+      baud_clk <= 0;
+    end
+    else if (count == limit) begin
+      count <= 0;
+      baud_clk <= !baud_clk;
+    end
     else count <= count + 1;
   end
   
-  assign baud_clk = count == 0;
-  
 endmodule
+  
