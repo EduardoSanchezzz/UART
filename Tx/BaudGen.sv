@@ -1,7 +1,7 @@
 module BaudGen(
   input wire resetn,
   input wire clk,
-  input wire [1:0] baud_rate,
+  input reg [1:0] baud_rate,
   output reg baud_clk);
   
   reg [12:0] count;
