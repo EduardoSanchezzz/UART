@@ -33,8 +33,20 @@ Supports 4 possible baud rates(based on 36MHz clock rate):
 - 19200 bps
 - 38400 bps
 
-**Circuit Diagram**
-<!-- IMAGE -->
+**Synthesis - Circuit Diagram**
+![BaudGen Circuit](Images/Tx/BG_circuit.png)
+
+**4800bps Baud Rate Simulation**
+![alt text](Images/Tx/BG_sim1.png)
+
+**9600bps Baud Rate Simulation**
+![alt text](Images/Tx/BG_sim2.png)
+
+**19600bps Baud Rate Simulation**
+![alt text](Images/Tx/BG_sim3.png)
+
+**39400bps Baud Rate Simulation**
+![alt text](Images/Tx/BG_sim4.png)
 
 ### Parity Bit Generator
 Supports 3 possible parity types:
