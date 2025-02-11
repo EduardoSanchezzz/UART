@@ -7,7 +7,6 @@
   - [Features](#features)
   - [UART Transmitter](#uart-transmitter)
     - [Circuit Diagram](#circuit-diagram)
-    - [Tx TestBench](#tx-testbench)
     - [Baud Rate Generator](#baud-rate-generator)
     - [Parity Bit Generator](#parity-bit-generator)
     - [PISO Shift Register](#piso-shift-register)
@@ -27,19 +26,6 @@ The UART Tx circuit includes a Baud Rate Generator, Parity Bit Generator and a P
 ### Circuit Diagram
 <!-- IMAGE -->
 
-### Tx TestBench
-**Baud Rate**
-image
-
-**Parity Type**
-image
-
-**Data Length**
-image
-
-**Reset Behaviour**
-image
-
 ### Baud Rate Generator
 Supports 4 possible baud rates(based on 36MHz clock rate):
 - 4800 bps
@@ -56,8 +42,14 @@ Supports 3 possible parity types:
 - Odd Parity
 - Even Parity
 
-**Circuit Diagram**
-<!-- IMAGE -->
+**Synthesis - Circuit Diagram**
+![ParityGen Circuit](Images/Tx/PG_circuit.png)
+
+**Even Parity Simulation**
+![alt text](Images/Tx/PG_sim1.png)
+
+**Odd Parity Simulation**
+![alt text](Images/Tx/PG_sim2.png)
 
 ### PISO Shift Register
 Takes in data and parity bit and sends out as serial data along with UART frame data.
