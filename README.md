@@ -6,9 +6,8 @@
   - [Overview](#overview)
   - [Features](#features)
   - [UART Transmitter](#uart-transmitter)
-    - [Circuit Diagram](#circuit-diagram)
-    - [Baud Rate Generator](#baud-rate-generator)
     - [Parity Bit Generator](#parity-bit-generator)
+    - [Baud Rate Generator](#baud-rate-generator)
     - [PISO Shift Register](#piso-shift-register)
 
 ## Overview
@@ -23,8 +22,23 @@ This projects involves designing and implementing a *Universal Asynchronous Rece
 ## UART Transmitter
 The UART Tx circuit includes a Baud Rate Generator, Parity Bit Generator and a Parallel-In-Serial-Out (PISO) Shift Register.
 
-### Circuit Diagram
+<!-- ### Circuit Diagram -->
 <!-- IMAGE -->
+
+### Parity Bit Generator
+Supports 3 possible parity types:
+- No Parity
+- Odd Parity
+- Even Parity
+
+**Synthesis - Circuit Diagram**
+![ParityGen Circuit](Images/Tx/PG_circuit.png)
+
+**Even Parity Simulation**
+![alt text](Images/Tx/PG_sim1.png)
+
+**Odd Parity Simulation**
+![alt text](Images/Tx/PG_sim2.png)
 
 ### Baud Rate Generator
 Supports 4 possible baud rates(based on 36MHz clock rate):
@@ -48,20 +62,6 @@ Supports 4 possible baud rates(based on 36MHz clock rate):
 **39400bps Baud Rate Simulation**
 ![alt text](Images/Tx/BG_sim4.png)
 
-### Parity Bit Generator
-Supports 3 possible parity types:
-- No Parity
-- Odd Parity
-- Even Parity
-
-**Synthesis - Circuit Diagram**
-![ParityGen Circuit](Images/Tx/PG_circuit.png)
-
-**Even Parity Simulation**
-![alt text](Images/Tx/PG_sim1.png)
-
-**Odd Parity Simulation**
-![alt text](Images/Tx/PG_sim2.png)
 
 ### PISO Shift Register
 Takes in data and parity bit and sends out as serial data along with UART frame data.
