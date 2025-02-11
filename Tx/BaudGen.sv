@@ -1,7 +1,7 @@
 module BaudGen(
   input wire resetn,
   input wire clk,
-  input reg [1:0] baud_rate,
+  input wire [1:0] baud_rate,
   output reg baud_clk);
   
   reg [12:0] count;
@@ -9,7 +9,7 @@ module BaudGen(
   parameter BAUD48 = 0, BAUD96 = 1, BAUD192 = 2, BAUD384 = 3;
   
   
-  reg [12:0] limit = 0;
+  reg [12:0] limit;
   
   always @(*) begin
     case(baud_rate)
@@ -17,6 +17,7 @@ module BaudGen(
       BAUD96: limit = 1875;
       BAUD192: limit = 937;
       BAUD384: limit = 469;
+      default: limit = 0;
     endcase
   end
   
@@ -24,8 +25,9 @@ module BaudGen(
     if (!resetn) begin 
       count <= 0;
       baud_clk <= 0;
+      limit = limit ? limit : 0;
     end
-    else if (count == limit) begin
+    else if (count >= limit) begin
       count <= 0;
       baud_clk <= !baud_clk;
     end

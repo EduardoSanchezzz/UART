@@ -8,23 +8,21 @@ module BaudGen_tb;
     
     #10 resetn = 0;
     #10 resetn = 1;
-    #1000 resetn = 0;
-    #10 resetn = 1;
-    #100000 $finish;
+    #30000 $finish;
   end
   
   reg clk = 0;
-  wire[1:0] baud_rate = 3;
-  reg count;
+  reg [1:0] baud_rate = 2'bxx;
   
   always #1 clk = !clk;
   
+  initial begin
+    #20 baud_rate = 0;
+  end
   
   wire baud_clk;
   BaudGen bg1(.resetn(resetn), .clk(clk), .baud_rate(baud_rate), .baud_clk(baud_clk));
   
-  initial
-    //$monitor("at time %t, clk = %b, baud_clk = %b", $time, clk, baud_clk);
-  $monitor("baud_clk = %b", baud_clk);
 endmodule
+  
   
